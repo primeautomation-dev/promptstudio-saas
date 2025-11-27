@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard - PromptStudio{% endblock %}
+
+{% block content %}
+<div class="dashboard-container with-sidebar">
+    <aside class="dashboard-sidebar">
+        <nav class="sidebar-nav">
+            <div class="sidebar-section-title">Main</div>
+            <a href="/dashboard" class="sidebar-link active">
+                <span>📊</span>
+                <span>Overview</span>
+            </a>
+            <a href="/dashboard#tools" class="sidebar-link">
+                <span>🛠️</span>
+                <span>Tools</span>
+            </a>
+            <div class="sidebar-divider"></div>
+            <div class="sidebar-section-title">Account</div>
+            {% if not is_pro %}
+            <a href="/upgrade" class="sidebar-link" style="background: linear-gradient(135deg, rgba(139, 92, 246, 0.2), rgba(59, 130, 246, 0.2)); border-left: 3px solid #8b5cf6;">
+                <span>⭐</span>
+                <span>Upgrade to Pro</span>
+            </a>
+            {% endif %}
+            <a href="/logout" class="sidebar-link">
+                <span>🚪</span>
+                <span>Logout</span>
+            </a>
+        </nav>
+    </aside>
+    
+    <main class="dashboard-main with-sidebar">
+        <div class="welcome-section">
+            <h2>Welcome, {{ username }}!</h2>
+            {% if is_pro %}
+            <span style="display: inline-block; margin-top: 8px; padding: 6px 16px; background: linear-gradient(135deg, rgba(139, 92, 246, 0.3), rgba(59, 130, 246, 0.3)); border: 1px solid rgba(139, 92, 246, 0.5); border-radius: 20px; font-size: 14px; font-weight: 600; color: #a78bfa;">⭐ PRO USER</span>
+            {% else %}
+            <p style="margin-top: 8px; color: rgba(255, 255, 255, 0.6); font-size: 14px;">Free Plan: Limited usage</p>
+            {% endif %}
+        </div>
+        
+        <div id="tools" class="tools-grid">
+            {% if not is_pro %}
+            <a href="/upgrade" class="tool-card" style="border: 2px solid rgba(139, 92, 246, 0.6); background: linear-gradient(135deg, rgba(139, 92, 246, 0.15), rgba(59, 130, 246, 0.15));">
+                <h3 class="tool-title">Go Pro – Unlock all AI Tools</h3>
+                <p class="tool-desc">Upgrade to Pro for unlimited access to all prompt generation tools.</p>
+                <span class="tool-link-indicator">Upgrade Now →</span>
+            </a>
+            {% endif %}
+            <a href="/tool/sora" class="tool-card">
+                <h3 class="tool-title">Sora Prompt Generator</h3>
+                <p class="tool-desc">Create optimized prompts for OpenAI's Sora video generation model.</p>
+                <span class="tool-link-indicator">Open Tool →</span>
+            </a>
+            
+            <a href="/tool/runway" class="tool-card">
+                <h3 class="tool-title">Runway Prompt Generator</h3>
+                <p class="tool-desc">Generate professional prompts for Runway ML video creation.</p>
+                <span class="tool-link-indicator">Open Tool →</span>
+            </a>
+            
+            <a href="/tool/pika" class="tool-card">
+                <h3 class="tool-title">Pika Prompt Generator</h3>
+                <p class="tool-desc">Craft effective prompts for Pika Labs video generation platform.</p>
+                <span class="tool-link-indicator">Open Tool →</span>
+            </a>
+            
+            <a href="/tool/scene" class="tool-card">
+                <h3 class="tool-title">Scene Breakdown Generator</h3>
+                <p class="tool-desc">Break down complex video concepts into structured scene descriptions.</p>
+                <span class="tool-link-indicator">Open Tool →</span>
+            </a>
+            
+            <a href="/tool/thumbnail" class="tool-card">
+                <h3 class="tool-title">Thumbnail Generator</h3>
+                <p class="tool-desc">Generate compelling thumbnail ideas and descriptions for your videos.</p>
+                <span class="tool-link-indicator">Open Tool →</span>
+            </a>
+            
+            <a href="/tool/viral" class="tool-card">
+                <h3 class="tool-title">Viral Video Idea Generator</h3>
+                <p class="tool-desc">Get creative video concepts designed to maximize engagement and virality.</p>
+                <span class="tool-link-indicator">Open Tool →</span>
+            </a>
+        </div>
+    </main>
+</div>
+{% endblock %}
+

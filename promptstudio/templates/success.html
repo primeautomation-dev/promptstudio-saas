@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %}Payment Successful - PromptStudio{% endblock %}
+
+{% block content %}
+<div class="tool-page-container">
+    <div class="tool-page-header-simple">
+        <h1 class="tool-page-title">Payment Successful</h1>
+        <p class="tool-page-subtitle">Your subscription has been activated. You now have unlimited access to all AI tools.</p>
+    </div>
+    
+    <main class="tool-page-main">
+        <div class="tool-page-card">
+            <div class="tool-page-intro">
+                <h2 class="tool-form-title" style="margin-bottom: 16px;">Welcome to Pro!</h2>
+                <p class="tool-page-desc">Your subscription has been activated. You now have unlimited access to all AI tools.</p>
+            </div>
+            
+            <div style="margin-top: 32px;">
+                <a href="/dashboard" class="btn-tool-submit" style="text-decoration: none; display: inline-block; width: auto; padding: 16px 32px;">
+                    <span>Go to Dashboard</span>
+                </a>
+            </div>
+        </div>
+    </main>
+</div>
+{% endblock %}
+

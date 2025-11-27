@@ -1,0 +1,122 @@
+{% extends "base.html" %}
+
+{% block title %}AI Video Prompt Studio - PromptStudio{% endblock %}
+
+{% block nav %}
+<nav class="main-nav">
+    <div class="nav-container">
+        <div class="nav-brand">
+            <a href="/" class="brand-link">PromptStudio</a>
+        </div>
+        <div class="nav-menu">
+            <a href="/" class="nav-link">Home</a>
+            <a href="/upgrade" class="nav-link">Pricing</a>
+        </div>
+        <div class="nav-actions">
+            <a href="/login" class="btn btn-nav-secondary">Login</a>
+            <a href="/register" class="btn btn-nav-primary">Sign Up</a>
+        </div>
+    </div>
+</nav>
+{% endblock %}
+
+{% block content %}
+<div class="landing-container">
+    <!-- Hero Section -->
+    <section class="landing-hero">
+        <div class="hero-content">
+            <h1 class="hero-title">PromptStudio – AI Video Prompt Studio for Sora, Runway & Pika</h1>
+            <p class="hero-subtitle">Generate production-ready prompts for AI video tools in seconds.</p>
+            <div class="hero-actions">
+                <a href="/register" class="btn-hero btn-hero-primary">Get Started – Sign Up</a>
+                <a href="/upgrade" class="btn-hero btn-hero-secondary">View Pricing</a>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <div class="hero-card">
+                <div class="hero-card-header">
+                    <div class="hero-card-dots">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+                <div class="hero-card-content">
+                    <div class="hero-tool-item">
+                        <span class="tool-icon">🎬</span>
+                        <div>
+                            <strong>Sora Prompt Generator</strong>
+                            <p>Create cinematic prompts</p>
+                        </div>
+                    </div>
+                    <div class="hero-tool-item">
+                        <span class="tool-icon">🎥</span>
+                        <div>
+                            <strong>Runway Generator</strong>
+                            <p>Professional video prompts</p>
+                        </div>
+                    </div>
+                    <div class="hero-tool-item">
+                        <span class="tool-icon">⚡</span>
+                        <div>
+                            <strong>Pika Labs</strong>
+                            <p>Fast video generation</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="landing-features">
+        <div class="features-header">
+            <h2 class="features-title">Everything you need in one place</h2>
+            <p class="features-subtitle">Professional prompt generation for all major AI video platforms</p>
+        </div>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon-wrapper">
+                    <span class="feature-icon-large">🎬</span>
+                </div>
+                <h3 class="feature-card-title">Sora Prompts</h3>
+                <p class="feature-card-desc">Generate cinematic, production-ready prompts optimized for OpenAI's Sora video generation.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon-wrapper">
+                    <span class="feature-icon-large">🎥</span>
+                </div>
+                <h3 class="feature-card-title">Runway Prompts</h3>
+                <p class="feature-card-desc">Create stylized, edit-friendly prompts perfect for Runway Gen-2 and Gen-3.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon-wrapper">
+                    <span class="feature-icon-large">⚡</span>
+                </div>
+                <h3 class="feature-card-title">Pika Prompts</h3>
+                <p class="feature-card-desc">Design dynamic AI animation prompts with strong character and motion guidance.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon-wrapper">
+                    <span class="feature-icon-large">📸</span>
+                </div>
+                <h3 class="feature-card-title">Thumbnail & Viral Ideas</h3>
+                <p class="feature-card-desc">Craft high-conversion thumbnail prompts and viral video concepts for short-form platforms.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="landing-cta">
+        <div class="cta-content">
+            <h2 class="cta-title">Ready to create amazing AI video prompts?</h2>
+            <p class="cta-subtitle">Join PromptStudio today and start generating professional prompts in seconds.</p>
+            <div class="cta-actions">
+                <a href="/register" class="btn-hero btn-hero-primary btn-hero-large">Get Started Free</a>
+                <a href="/upgrade" class="btn-hero btn-hero-secondary btn-hero-large">View Pricing</a>
+            </div>
+        </div>
+    </section>
+</div>
+{% endblock %}
+

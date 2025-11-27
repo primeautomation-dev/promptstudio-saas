@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}Payment Cancelled - PromptStudio{% endblock %}
+
+{% block content %}
+<div class="tool-page-container">
+    <div class="tool-page-header-simple">
+        <h1 class="tool-page-title">Payment Cancelled</h1>
+        <p class="tool-page-subtitle">Your payment was cancelled. You can try again anytime.</p>
+    </div>
+    
+    <main class="tool-page-main">
+        <div class="tool-page-card">
+            <div class="tool-page-intro">
+                <h2 class="tool-form-title" style="margin-bottom: 16px;">Payment Cancelled</h2>
+                <p class="tool-page-desc">Your payment was cancelled. You can try again anytime.</p>
+            </div>
+            
+            <div style="margin-top: 32px;">
+                <a href="/upgrade" class="btn-tool-submit" style="text-decoration: none; display: inline-block; width: auto; padding: 16px 32px; margin-right: 16px;">
+                    <span>Try Again</span>
+                </a>
+                <a href="/dashboard" class="btn-tool-submit" style="text-decoration: none; display: inline-block; width: auto; padding: 16px 32px; background: rgba(139, 92, 246, 0.2); border-color: rgba(139, 92, 246, 0.4);">
+                    <span>Go to Dashboard</span>
+                </a>
+            </div>
+        </div>
+    </main>
+</div>
+{% endblock %}
+

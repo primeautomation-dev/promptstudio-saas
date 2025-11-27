@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}Usage Limit Reached - PromptStudio{% endblock %}
+
+{% block content %}
+<div class="tool-page-container">
+    <div class="tool-page-header-simple">
+        <a href="/dashboard" class="tool-back-link">← Back to Dashboard</a>
+        <h1 class="tool-page-title">Usage Limit Reached</h1>
+        <p class="tool-page-subtitle">You reached the free limit. Upgrade to Pro to continue.</p>
+    </div>
+    
+    <main class="tool-page-main">
+        <div class="tool-page-card">
+            <div class="tool-page-intro">
+                <h2 class="tool-form-title" style="margin-bottom: 16px;">Free Limit Reached</h2>
+                <p class="tool-page-desc">You reached the free limit. Upgrade to Pro to continue.</p>
+            </div>
+            
+            <div style="margin-top: 32px;">
+                <a href="/upgrade" class="btn-tool-submit" style="text-decoration: none; display: inline-block; width: auto; padding: 16px 32px;">
+                    <span>Upgrade to Pro</span>
+                </a>
+            </div>
+        </div>
+    </main>
+</div>
+{% endblock %}
+

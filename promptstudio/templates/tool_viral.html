@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+
+{% block title %}Viral Video Idea Generator - PromptStudio{% endblock %}
+
+{% block content %}
+<div class="tool-page-container">
+    <div class="tool-page-header-simple">
+        <a href="/dashboard" class="tool-back-link">← Back to Dashboard</a>
+        <h1 class="tool-page-title">Viral Video Idea Generator</h1>
+        <p class="tool-page-subtitle">Get creative video concepts designed to maximize engagement and virality.</p>
+    </div>
+    
+    <main class="tool-page-main">
+        <div class="tool-layout">
+            <div class="tool-column tool-column-form">
+                <div class="tool-form-card">
+                    <div class="tool-form-header">
+                        <h2 class="tool-form-title">Viral Video Idea Generator</h2>
+                        <p class="tool-form-subtitle">Get creative video concepts designed to maximize engagement and virality.</p>
+                    </div>
+                    
+                    <form method="POST" action="/tool/viral" class="tool-form">
+                        <div class="form-group">
+                            <label for="video_idea" class="form-label">Enter your video idea</label>
+                            <textarea 
+                                id="video_idea" 
+                                name="video_idea" 
+                                class="tool-textarea" 
+                                placeholder="e.g., a cat accidentally starting a firework show in the kitchen, shocking opening hook, fast-paced, perfect for TikTok/Reels"
+                                rows="8"
+                                required
+                            >{{ video_idea or '' }}</textarea>
+                            <p class="form-helper-text">Tip: Mention the hook, pacing, shock/surprise element, and platform (TikTok/Reels/Shorts) for maximum viral potential.</p>
+                        </div>
+                        
+                        <button type="submit" class="btn-tool-submit">
+                            <span>Generate Viral Idea</span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="tool-column tool-column-result">
+                <div class="result-card">
+                    <h3 class="result-card-title">Generated Prompt</h3>
+                    <div class="result-card-content" id="result-content">
+                        {% if generated_prompt %}
+                        <div class="result-scrollable">
+                            <pre class="result-text">{{ generated_prompt }}</pre>
+                        </div>
+                        <button class="btn-copy" onclick="copyToClipboard(event)" title="Copy to clipboard">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                            </svg>
+                            Copy
+                        </button>
+                        {% else %}
+                        <p class="result-placeholder">Your viral video idea will appear here.</p>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+
+<script>
+function copyToClipboard(event) {
+    const text = document.getElementById('result-content').innerText;
+    navigator.clipboard.writeText(text).then(() => {
+        const btn = event.target.closest('.btn-copy');
+        const originalText = btn.innerHTML;
+        btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Copied!';
+        btn.style.color = '#10b981';
+        setTimeout(() => {
+            btn.innerHTML = originalText;
+            btn.style.color = '';
+        }, 2000);
+    });
+}
+</script>
+{% endblock %}
+

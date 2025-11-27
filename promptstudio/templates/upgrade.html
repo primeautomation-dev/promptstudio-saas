@@ -1,0 +1,130 @@
+{% extends "base.html" %}
+
+{% block title %}Pricing - PromptStudio{% endblock %}
+
+{% block content %}
+<div class="pricing-container">
+    <div class="pricing-hero">
+        <h1 class="pricing-hero-title">Simple, Transparent Pricing</h1>
+        <p class="pricing-hero-subtitle">Choose the plan that's right for you. Upgrade or downgrade anytime.</p>
+    </div>
+    
+    <div class="pricing-cards">
+        <div class="pricing-card">
+            <div class="pricing-card-header">
+                <h3 class="pricing-card-title">Free</h3>
+                <div class="pricing-card-price">
+                    <span class="price-amount">$0</span>
+                    <span class="price-period">/month</span>
+                </div>
+                <p class="pricing-card-desc">Good for testing the tool and getting started</p>
+            </div>
+            <ul class="pricing-features">
+                <li class="pricing-feature">
+                    <span class="feature-icon">✓</span>
+                    <span>Basic prompt generation across all tools</span>
+                </li>
+                <li class="pricing-feature">
+                    <span class="feature-icon">✓</span>
+                    <span>Limited usage (3 prompts per tool per day)</span>
+                </li>
+                <li class="pricing-feature">
+                    <span class="feature-icon">✓</span>
+                    <span>Access to all AI tools (Sora, Runway, Pika, Thumbnail, Viral)</span>
+                </li>
+                <li class="pricing-feature">
+                    <span class="feature-icon">✓</span>
+                    <span>Community support</span>
+                </li>
+                <li class="pricing-feature">
+                    <span class="feature-icon">✓</span>
+                    <span>Good for testing the platform</span>
+                </li>
+            </ul>
+            {% if username is defined and username %}
+            <a href="/dashboard" class="btn-pricing">Current Plan</a>
+            {% else %}
+            <a href="/register" class="btn-pricing btn-pricing-secondary">Get Started</a>
+            {% endif %}
+        </div>
+        
+        <div class="pricing-card pricing-card-featured">
+            <div class="pricing-badge">Most Popular</div>
+            <div class="pricing-card-header">
+                <h3 class="pricing-card-title">Pro</h3>
+                <div class="pricing-card-price">
+                    <span class="price-amount">$9</span>
+                    <span class="price-period">/month</span>
+                </div>
+                <p class="pricing-card-desc">Unlimited access for creators and professionals</p>
+            </div>
+            <ul class="pricing-features">
+                <li class="pricing-feature">
+                    <span class="feature-icon">✓</span>
+                    <span>Unlimited AI prompt generation across all tools</span>
+                </li>
+                <li class="pricing-feature">
+                    <span class="feature-icon">✓</span>
+                    <span>Optimized templates for Sora, Runway, Pika, Thumbnails and Viral hooks</span>
+                </li>
+                <li class="pricing-feature">
+                    <span class="feature-icon">✓</span>
+                    <span>All AI tools unlocked with premium features</span>
+                </li>
+                <li class="pricing-feature">
+                    <span class="feature-icon">✓</span>
+                    <span>Priority support with fast response times</span>
+                </li>
+                <li class="pricing-feature">
+                    <span class="feature-icon">✓</span>
+                    <span>Early access to new tools and features</span>
+                </li>
+                <li class="pricing-feature">
+                    <span class="feature-icon">✓</span>
+                    <span>Best for creators and agencies</span>
+                </li>
+            </ul>
+            {% if is_pro is defined and is_pro %}
+            <a href="/dashboard" class="btn-pricing">Current Plan</a>
+            {% else %}
+            <button onclick="buyPro()" class="btn-pricing btn-pricing-primary">Upgrade to Pro</button>
+            {% endif %}
+        </div>
+    </div>
+    
+    <div class="pricing-faq">
+        <h2 class="pricing-faq-title">Frequently Asked Questions</h2>
+        <div class="pricing-faq-grid">
+            <div class="pricing-faq-item">
+                <h4>Can I change plans later?</h4>
+                <p>Yes, you can upgrade or downgrade your plan at any time. Changes take effect immediately.</p>
+            </div>
+            <div class="pricing-faq-item">
+                <h4>What payment methods do you accept?</h4>
+                <p>We accept all major credit cards and debit cards through Stripe's secure payment system.</p>
+            </div>
+            <div class="pricing-faq-item">
+                <h4>Is there a free trial?</h4>
+                <p>Yes! The Free plan lets you try all features with limited usage. No credit card required.</p>
+            </div>
+            <div class="pricing-faq-item">
+                <h4>Do you offer refunds?</h4>
+                <p>We offer a 30-day money-back guarantee. Contact us if you're not satisfied.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+async function buyPro() {
+    const res = await fetch('/create-checkout-session', { method: 'POST' });
+    const data = await res.json();
+    if (data.checkout_url) {
+        window.location.href = data.checkout_url;
+    } else {
+        alert('Error: ' + (data.error || 'Failed to create checkout session'));
+    }
+}
+</script>
+{% endblock %}
+

@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+
+{% block title %}Runway Prompt Generator - PromptStudio{% endblock %}
+
+{% block content %}
+<div class="tool-page-container">
+    <div class="tool-page-header-simple">
+        <a href="/dashboard" class="tool-back-link">← Back to Dashboard</a>
+        <h1 class="tool-page-title">Runway Prompt Generator</h1>
+        <p class="tool-page-subtitle">Generate professional prompts for Runway ML video creation.</p>
+    </div>
+    
+    <main class="tool-page-main">
+        <div class="tool-layout">
+            <div class="tool-column tool-column-form">
+                <div class="tool-form-card">
+                    <div class="tool-form-header">
+                        <h2 class="tool-form-title">Runway Prompt Generator</h2>
+                        <p class="tool-form-subtitle">Generate professional prompts for Runway ML video creation.</p>
+                    </div>
+                    
+                    <form method="POST" action="/tool/runway" class="tool-form">
+                        <div class="form-group">
+                            <label for="video_idea" class="form-label">Enter your video idea</label>
+                            <textarea 
+                                id="video_idea" 
+                                name="video_idea" 
+                                class="tool-textarea" 
+                                placeholder="e.g., a stylized dramatic shot of a runner in the rain, dynamic framing, artistic lighting, edit-friendly composition"
+                                rows="8"
+                                required
+                            >{{ video_idea or '' }}</textarea>
+                            <p class="form-helper-text">Tip: Focus on stylized looks, shot composition, and visual style that works well with Runway Gen-2/Gen-3.</p>
+                        </div>
+                        
+                        <button type="submit" class="btn-tool-submit">
+                            <span>Generate Runway Prompt</span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="tool-column tool-column-result">
+                <div class="result-card">
+                    <h3 class="result-card-title">Generated Prompt</h3>
+                    <div class="result-card-content" id="result-content">
+                        {% if generated_prompt %}
+                        <div class="result-scrollable">
+                            <pre class="result-text">{{ generated_prompt }}</pre>
+                        </div>
+                        <button class="btn-copy" onclick="copyToClipboard(event)" title="Copy to clipboard">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                            </svg>
+                            Copy
+                        </button>
+                        {% else %}
+                        <p class="result-placeholder">Your Runway prompt will appear here.</p>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+
+<script>
+function copyToClipboard(event) {
+    const text = document.getElementById('result-content').innerText;
+    navigator.clipboard.writeText(text).then(() => {
+        const btn = event.target.closest('.btn-copy');
+        const originalText = btn.innerHTML;
+        btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Copied!';
+        btn.style.color = '#10b981';
+        setTimeout(() => {
+            btn.innerHTML = originalText;
+            btn.style.color = '';
+        }, 2000);
+    });
+}
+</script>
+{% endblock %}
+

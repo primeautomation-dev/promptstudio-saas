@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block title %}Sign Up - PromptStudio{% endblock %}
+
+{% block nav %}
+<nav class="main-nav">
+    <div class="nav-container">
+        <div class="nav-brand">
+            <a href="/" class="brand-link">PromptStudio</a>
+        </div>
+        <div class="nav-menu">
+            <a href="/" class="nav-link">Home</a>
+            <a href="/upgrade" class="nav-link">Pricing</a>
+        </div>
+        <div class="nav-actions">
+            <a href="/login" class="btn btn-nav-secondary">Login</a>
+            <a href="/register" class="btn btn-nav-primary">Sign Up</a>
+        </div>
+    </div>
+</nav>
+{% endblock %}
+
+{% block content %}
+<div class="auth-container">
+    <div class="auth-card">
+        <h1 class="auth-title">PromptStudio</h1>
+        <h2 class="auth-subtitle">Create your PromptStudio account</h2>
+        <p class="auth-description">Start generating AI prompts in seconds.</p>
+        
+        {% if error %}
+        <div class="error-message">{{ error }}</div>
+        {% endif %}
+        
+        <form method="POST" action="/register" class="auth-form">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" required autofocus>
+            </div>
+            
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            
+            <button type="submit" class="btn btn-primary">Create account</button>
+        </form>
+        
+        <div class="auth-links">
+            <div class="auth-link">
+                Already have an account? <a href="/login">Login</a>
+            </div>
+            <div class="auth-link">
+                <a href="/">← Back to Home</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
